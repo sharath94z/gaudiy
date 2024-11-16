@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.28.2
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.43
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.36
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.66.3
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.67.0
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/google/cel-go v0.22.0
 	github.com/google/uuid v1.6.0
