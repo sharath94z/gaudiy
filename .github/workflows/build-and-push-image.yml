@@ -36,8 +36,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            neosmemo/memos
-            ghcr.io/usememos/memos
+            sharath94z/gaudiy
           flavor: |
             latest=false
           tags: |
