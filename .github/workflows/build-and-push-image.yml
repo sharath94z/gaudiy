@@ -1,4 +1,4 @@
-name: build-and-push-test-image
+name: build-and-push-image
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=raw,value=test
+            type=raw,value=${{ github.sha }}
 
       - name: Build and Push
         id: docker_build
