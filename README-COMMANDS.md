@@ -37,3 +37,11 @@ kubectl apply -f deployments/datadog-agent.yaml
 ```
 
 ![datadog-dashboard.png](docs/images/datadog-dashboard.png)
+
+Deploy memos application
+```commandline
+helm install memos -n applications deployments/helm_charts/memos
+export POD_NAME=$(kubectl get pods --namespace applications -l "app.kubernetes.io/name=memos,app.kubernetes.io/instance=memos" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace applications $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+kubectl --namespace applications port-forward $POD_NAME 8080:$CONTAINER_PORT
+```

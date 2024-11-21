@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gaudiy-ingress
+  namespace: monitoring
+spec:
+  rules:
+  - host: kubeopsview.mygauidy.com  # Replace with your desired hostname
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-ops-view
+            port:
+              number: 80
