@@ -6,6 +6,9 @@ on:
       - main
       - feature/*
 
+concurrency:
+  group: "${{ github.repository_id }}-${{ github.event.pull_request.number}}"
+
 jobs:
   build-and-push-test-image:
     runs-on: ubuntu-latest
@@ -52,3 +55,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deployment:
+    uses: ./.github/workflows/deployment-workflow.yaml
+    with:
+      kubernetes_namespace: applications
+      docker_tag: ${{ github.sha }}
+    secrets:
+      gke_project: ${{ secrets.GKE_PROJECT }}
+      gke_sa_key: ${{ secrets.GKE_SA_KEY }}
