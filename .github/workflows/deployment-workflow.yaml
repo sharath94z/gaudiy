@@ -54,4 +54,4 @@ jobs:
 
       - name: deploy
         run: |
-          helm install memos -n ${{ inputs.kubernetes_namespace }} deployments/helm_charts/memos
+          helm upgrade --set image.tag=${{ env.DOCKER_TAG }} memos -n ${{ inputs.kubernetes_namespace }} deployments/helm_charts/memos
