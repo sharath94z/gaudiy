@@ -1,0 +1,57 @@
+name: deployment-workflow
+
+on:
+  workflow_call:
+    inputs:
+      kubernetes_namespace:
+        description: 'kubernetes namespace to deploy'
+        type: string
+        required: true
+        default: applications
+      docker_tag:
+        description: 'Docker tag to deploy'
+        type: string
+        required: true
+        default: 'latest'
+    secrets:
+      gke_project:
+        description: 'gke project id'
+        required: true
+      gke_sa_key:
+        description: 'gke service account key'
+        required: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: 'gaudiy-gke-cluster'
+  GKE_ZONE: 'asia-northeast1-a'
+  DOCKER_TAG: ${{ inputs.docker_tag }}
+  KUBERNETES_NAMESPACE: ${{ inputs.kubernetes_namespace }}
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      # Authenticate with gcp
+      - name: gcp authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.gke_sa_key }}'
+
+      - name: set up gke
+        uses: google-github-actions/get-gke-credentials@v2
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+
+      - name: deploy
+        run: |
+          helm install memos -n ${{ inputs.kubernetes_namespace }} deployments/helm_charts/memos
