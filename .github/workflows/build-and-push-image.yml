@@ -63,4 +63,4 @@ jobs:
       docker_tag: ${{ github.sha }}
     secrets:
       gke_project: ${{ secrets.GKE_PROJECT }}
-      gke_sa_key: ${{ secrets.GKE_SA_KEY }}
+      gke_sa_key: ${{ secrets.GK_SA_KEY }}
