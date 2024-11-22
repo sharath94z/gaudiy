@@ -57,6 +57,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   deployment:
+    needs: build-and-push-test-image
     uses: ./.github/workflows/deployment-workflow.yaml
     with:
       kubernetes_namespace: applications
