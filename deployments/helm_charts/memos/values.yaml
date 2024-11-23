@@ -16,13 +16,12 @@ nameOverride: ""
 fullnameOverride: ""
 
 persistence:
-  ## 如果enabled 为False, 会使用emptyDir, Pod 重建后数据可能丢失, 建议使用持久卷
   ## If enabled is False, emptyDir will be used, data may be lost after Pod rebuild, it is recommended to use persistent volume
-  enabled: false
-  storageClass: "local"
+  enabled: true
+  storageClass: "standard-rwo"
   existPersistClaim: ""
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 1Gi
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -49,7 +48,7 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 5230
 
 ingress:
@@ -71,7 +70,12 @@ ingress:
   #      - chart-example.local
 
 resources:
-  {}
+   limits:
+     cpu: 100m
+     memory: 128Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -85,10 +89,10 @@ resources:
 
 autoscaling:
   enabled: false
-  minReplicas: 1
-  maxReplicas: 100
+  minReplicas: 2
+  maxReplicas: 5
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
