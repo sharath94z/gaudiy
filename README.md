@@ -1,58 +1,88 @@
-# Memos - Open Source, Self-hosted, Your Notes, Your Way
+# Memos - Open Source, Self-hosted, Your Notes, Your Way (open source application used gaudiy assignment)
 
 <img align="right" height="96px" src="https://www.usememos.com/logo-rounded.png" alt="Memos" />
 
 An open-source, self-hosted note-taking solution designed for seamless deployment and multi-platform access. Experience effortless plain text writing with pain-free, complemented by robust Markdown syntax support for enhanced formatting.
 
-<a href="https://www.usememos.com">Home Page</a> •
-<a href="https://www.usememos.com/blog">Blogs</a> •
-<a href="https://www.usememos.com/docs">Docs</a> •
-<a href="https://demo.usememos.com/">Live Demo</a>
 
-<p>
-  <a href="https://hub.docker.com/r/neosmemo/memos"><img alt="Docker pull" src="https://img.shields.io/docker/pulls/neosmemo/memos.svg"/></a>
-  <a href="https://discord.gg/tfPJa4UmAv"><img alt="Discord" src="https://img.shields.io/badge/discord-chat-5865f2?logo=discord&logoColor=f5f5f5" /></a>
-</p>
+Here's a detailed outline for your README.md tailored for the recruitment assignment. It incorporates all the required elements and ensures clarity and comprehensiveness.
 
-![demo](https://www.usememos.com/demo.png)
+## Gaudiy Challenge Statement
+Design and implement a CI/CD pipeline for a microservices-based web application hosted on GCP, ensuring scalability, monitoring, logging, automation.
 
-## Main Features
+## Table of Contents
+1. [Implementation Overview](#implementation-overview)
+2. [Architectural Diagram](#architecture)
+3. [Setup and Deployment](#setup-and-deployment)
+4. [Infrastructure as Code (IaC)](#infrastructure-as-code-iac)
+5. [Continuous Integration (CI)](#continuous-integration-ci)
+6. [Continuous Deployment (CD)](#continuous-deployment-cd)
+7. [Monitoring and Logging](#monitoring-and-logging)
+8. [Security Considerations](#security-considerations)
+9. [Assumptions](#assumptions)
+10. [Design Decisions](#design-decisions)
+11. [Setup Instructions](#setup-instructions)
+---
+<a id="implementation-overview"></a>
+## Implementation Overview
 
-- **Privacy First** 🏠: Take control of your data. All runtime data is securely stored in your local database.
-- **Create at Speed** ✍️: Save content as plain text for quick access, with Markdown support for fast formatting and easy sharing.
-- **Lightweight but Powerful** 🤲: Built with Go, React.js, and a compact architecture, our application delivers powerful performance in a lightweight package.
-- **Customizable** 🧩: Easily customize your server name, icon, description, system style, and execution scripts to make it uniquely yours.
-- **Open Source** 🦦: Memos embraces the future of open source, with all code available on GitHub for transparency and collaboration.
-- **Free to Use** 💸: Enjoy all features completely free, with no charges ever for any content.
+* Web Application - Used a open source self-hosted note taking application developed using golang and uses mysql sqlite database.
+* Infrastructure as Code - Uses Terraform provisioning tool to create and maintain GKE cluster.
+* Continuous Integration & Continuous Deployment - CI/CD pipeline implemented using Github action. CI performs front & backend checks, docker image build, and deploy the code to Kubernetes cluster when merged PR to main branch.
+* Docker - Created Dockerfile to build and push docker images to docker hub.
+* Monitoring and logging - Datadog a cloud based monitoring solution is used to collect metrics, logs and other infrastructure telemetry data to detect and troubleshoot issues.
+---
+<a id="architecture"></a>
+## Architectural Diagram
+![gaudiy-arch-diagram.png](docs/images/gaudiy-arch-diagram.png)
+---
+<a id="setup-instructions"></a>
+## Setup Instructions 
 
-## Deploy with Docker in seconds
-
+Configure kubectl  command line access by running the following command:
 ```bash
-docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable
+gcloud container clusters get-credentials gaudiy-gke-cluster --zone asia-northeast1-a --project blissful-axiom-442117-s9
 ```
 
-> [!NOTE]
-> This command is only applicable for Unix/Linux systems. For Windows, please refer to the detailed [documentation](https://www.usememos.com/docs/install/container-install#docker-on-windows).
->
-> The `~/.memos/` directory will be used as the data directory on your local machine, while `/var/opt/memos` is the directory of the volume in Docker and should not be modified.
+Create monitoring namespace
+```bash
+kubectl create namespace monitoring
+```
 
-Learn more about [other installation methods](https://www.usememos.com/docs/install).
+install kubectx
+```commandline
+brew install kubectx
+```
 
-## Contribution
+Install helm
+```commandline
+brew install helm
+```
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. We greatly appreciate any contributions you make. Thank you for being a part of our community! 🥰
+Install kubeopsview for cluster monitoring
+```commandline
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
+helm repo update
+helm install kube-ops-view k8s-at-home/kube-ops-view -f ./deployments/helm_values/kubeopsview.yaml 
+export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=kube-ops-view,app.kubernetes.io/instance=kube-ops-view" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward $POD_NAME 8080:8080
+```
+![img.png](docs/images/img.png)
 
-## Sponsorship
+Setup datadog
+```commandline
+helm repo add datadog https://helm.datadoghq.com
+helm install datadog-operator datadog/datadog-operator
+kubectl create secret generic datadog-secret --from-literal api-key=***
+kubectl apply -f deployments/datadog-agent.yaml
+```
 
-If you find Memos helpful, please consider sponsoring us. Your support will help us to continue developing and maintaining the project.
+![datadog-dashboard.png](docs/images/datadog-dashboard.png)
 
-❤️ Thanks to the following sponsors and backers: **[yourselfhosted](https://github.com/yourselfhosted)**, **[Burning_Wipf](https://github.com/KUKARAF)**, _[...see more](https://github.com/sponsors/usememos)_.
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=usememos/memos&type=Date)](https://star-history.com/#usememos/memos&Date)
-
-## Other Projects
-
-- [**Slash**](https://github.com/yourselfhosted/slash): An open source, self-hosted bookmarks and link sharing platform. Save and share your links very easily.
-- [**Gomark**](https://github.com/usememos/gomark): A markdown parser written in Go for Memos. And its [WebAssembly version](https://github.com/usememos/gomark-wasm) is also available.
+Deploy memos application
+```commandline
+helm install memos -n applications deployments/helm_charts/memos
+export POD_NAME=$(kubectl get pods --namespace applications -l "app.kubernetes.io/name=memos,app.kubernetes.io/instance=memos" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace applications $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+kubectl --namespace applications port-forward $POD_NAME 8080:$CONTAINER_PORT
+```
