@@ -1,4 +1,4 @@
-# Memos - Open Source, Self-hosted, Your Notes, Your Way (open source application used gaudiy assignment)
+# Memos - Open Source, Self-hosted, Your Notes, Your Way (open source application used for Gaudiy assignment)
 
 <img align="right" height="96px" src="https://www.usememos.com/logo-rounded.png" alt="Memos" />
 
