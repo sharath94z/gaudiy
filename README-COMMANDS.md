@@ -26,7 +26,7 @@ helm install kube-ops-view k8s-at-home/kube-ops-view -f ./deployments/helm_value
 export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=kube-ops-view,app.kubernetes.io/instance=kube-ops-view" -o jsonpath="{.items[0].metadata.name}")
 kubectl port-forward $POD_NAME 8080:8080
 ```
-![img.png](docs/images/img.png)
+![img.png](docs/images/kubeopsview.png)
 
 Setup datadog
 ```commandline
