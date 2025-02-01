@@ -178,8 +178,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
       code-inspector-plugin:
-        specifier: ^0.17.7
-        version: 0.17.7
+        specifier: ^0.19.2
+        version: 0.19.2
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -308,6 +308,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.7':
+    resolution: {integrity: sha512-kEvgGGgEjRUutvdVvZhbn/BxVt+5VSpwXz1j3WYXQbXDo8KzFOPNG2GQbdAiNq8g6wn1yKk7C/qrke03a84V+w==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-transform-react-jsx-self@7.25.9':
     resolution: {integrity: sha512-y8quW6p0WHkEhmErnfe58r7x0A70uKphQm8Sp8cV7tjNQwK56sNVK0M73LK3WuYmsuyrftut4xAkjjgU0twaMg==}
     engines: {node: '>=6.9.0'}
@@ -342,6 +347,10 @@ packages:
 
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.7':
+    resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
   '@braintree/sanitize-url@7.1.0':
@@ -716,6 +725,7 @@ packages:
   '@mui/base@5.0.0-beta.40':
     resolution: {integrity: sha512-I/lGHztkCzvwlXpjD2+SNmvNQvB4227xBXhISPjEaJUXGImOQ9f3D2Yj/T3KasSI/h0MLWy74X0J6clhPmsRbQ==}
     engines: {node: '>=12.0.0'}
+    deprecated: This package has been replaced by @base-ui-components/react
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
@@ -1416,14 +1426,14 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0
 
-  '@vue/compiler-core@3.5.12':
-    resolution: {integrity: sha512-ISyBTRMmMYagUxhcpyEH0hpXRd/KqDU4ymofPgl2XAkY9ZhQ+h0ovEZJIiPop13UmR/54oA2cgMDjgroRelaEw==}
+  '@vue/compiler-core@3.5.13':
+    resolution: {integrity: sha512-oOdAkwqUfW1WqpwSYJce06wvt6HljgY3fGeM9NcVA1HaYOij3mZG9Rkysn0OHuyUAGMbEbARIpsG+LPVlBJ5/Q==}
 
-  '@vue/compiler-dom@3.5.12':
-    resolution: {integrity: sha512-9G6PbJ03uwxLHKQ3P42cMTi85lDRvGLB2rSGOiQqtXELat6uI4n8cNz9yjfVHRPIu+MsK6TE418Giruvgptckg==}
+  '@vue/compiler-dom@3.5.13':
+    resolution: {integrity: sha512-ZOJ46sMOKUjO3e94wPdCzQ6P1Lx/vhp2RSvfaab88Ajexs0AHeV0uasYhi99WPaogmBlRHNRuly8xV75cNTMDA==}
 
-  '@vue/shared@3.5.12':
-    resolution: {integrity: sha512-L2RPSAwUFbgZH20etwrXyVyCBu9OxRSi8T/38QsvnkJyvq2LufW2lDCOzm7t/U9C1mkhJGWYfCuFBCmIuNivrg==}
+  '@vue/shared@3.5.13':
+    resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
   '@xobotyi/scrollbar-width@1.9.5':
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
@@ -1606,11 +1616,11 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
-  code-inspector-core@0.17.7:
-    resolution: {integrity: sha512-hqqUB/H52DUIHMr5BEQavedT6DOzrJcNRlIHSLjuy+Z9BPGJrtp5TmTMEU+1WOc68xn2a6ywhutaqsG5kBXdkA==}
+  code-inspector-core@0.19.2:
+    resolution: {integrity: sha512-O3EPIJm4avO+mEUvkwgphQXjrAVgc3OB5w5OC6gJl03rwKWIaQ4LNrATURUbf22IrYiQzGVJdyBUkoHpE8g2Mg==}
 
-  code-inspector-plugin@0.17.7:
-    resolution: {integrity: sha512-c3htX/s4NqOSN69fsQwdC20Anfgp9YvogYhYrGid08f92lta/nSKySyfFjI4jGHy7qkmoG0/IKRj0HdArGORLw==}
+  code-inspector-plugin@0.19.2:
+    resolution: {integrity: sha512-7tBctHV0gIP/lta4cZMQPgpQhyPvYdmL8RV2NYYBWSHk+jSrP/2EeTuxbMgdQS5e0YPQ7LbTej5PImrJ6oYR0w==}
 
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -1917,6 +1927,10 @@ packages:
   dompurify@3.1.6:
     resolution: {integrity: sha512-cTOAhc36AalkjtBpfG6O8JimdTMWNXjiePT2xQH/ppBGi/4uIpmj8eKyIkMJErXWARyINV/sB38yf8JCLF5pbQ==}
 
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
+
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -1974,8 +1988,8 @@ packages:
     resolution: {integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==}
     engines: {node: '>= 0.4'}
 
-  esbuild-code-inspector-plugin@0.17.7:
-    resolution: {integrity: sha512-SQRkb+vMfNJ+40rgxjFx6NGbopZjLbg7npITLfPJcqsf+fumMZV8r9OS2MUxMr5JfvnGlb5Bv040hF/WODS2dw==}
+  esbuild-code-inspector-plugin@0.19.2:
+    resolution: {integrity: sha512-Rb/CM/IOaYi7UHLIM3WbUlwS84gaS5yD+fauPzcw3jlv4YLbodO+Jxdjt2ANAM8bnfOvN94j7NLmKCCbZdjh7Q==}
 
   esbuild@0.21.5:
     resolution: {integrity: sha512-mg3OPMV4hXywwpoDxu3Qda5xCKQi+vCTZq8S9J/EpkhB2HzKXq4SNFZE3+NK93JYxc8VMSep+lOUSC/RVKaBqw==}
@@ -2506,6 +2520,9 @@ packages:
   langium@3.0.0:
     resolution: {integrity: sha512-+Ez9EoiByeoTu/2BXmEaZ06iPNXM6thWJp02KfBO/raSMyCJ4jw7AkWWa+zBCTm0+Tw1Fj9FOxdqSskyN5nAwg==}
     engines: {node: '>=16.0.0'}
+
+  launch-ide@1.0.1:
+    resolution: {integrity: sha512-U7qBxSNk774PxWq4XbmRe0ThiIstPoa4sMH/OGSYxrFVvg8x3biXcF1fsH6wasDpEmEXMdINUrQhBdwsSgKyMg==}
 
   layout-base@1.0.2:
     resolution: {integrity: sha512-8h2oVEZNktL4BH2JCOI90iD1yXwL6iNW7KcCKT2QZgQJR2vbqDsldCTPRU9NifTCqHZci57XvQQ15YTu+sTYPg==}
@@ -3377,8 +3394,8 @@ packages:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
-  vite-code-inspector-plugin@0.17.7:
-    resolution: {integrity: sha512-7ultwFnXZIGgIGYvhfWTzeH3kSFKLpXRyyELjY//nVVrlpUM80j6njH60nzqobeKnmDf59O91JT0WvGlDtAjAQ==}
+  vite-code-inspector-plugin@0.19.2:
+    resolution: {integrity: sha512-xovjPvuxkK50t5dorU1wRoU01ESzqOGlY2nmBtdf1wKVFqTmQIKf6J5cAbhL0ejoEgjV/xd4ZpuFTPiBrNQNCg==}
 
   vite@5.4.10:
     resolution: {integrity: sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==}
@@ -3435,8 +3452,8 @@ packages:
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
 
-  webpack-code-inspector-plugin@0.17.7:
-    resolution: {integrity: sha512-wmfS1J8b5wN873y0VWCCN7bFn+KcDS0pqAHVWH3m0TzH2BAm0uHoiHbTiSskS1m+CZw7fyuOWbkjVWFyY8QRQA==}
+  webpack-code-inspector-plugin@0.19.2:
+    resolution: {integrity: sha512-59IBRCKCzu0eGONu6Mog64jBiiB6twbai4R0qmEKFMOcMJHnHE6nEwNT0NdeImHqv2k542pN5lYvo1LIusiVEA==}
 
   which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
@@ -3635,6 +3652,10 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
+  '@babel/parser@7.26.7':
+    dependencies:
+      '@babel/types': 7.26.7
+
   '@babel/plugin-transform-react-jsx-self@7.25.9(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -3688,6 +3709,11 @@ snapshots:
       to-fast-properties: 2.0.0
 
   '@babel/types@7.26.0':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.7':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
@@ -4704,20 +4730,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vue/compiler-core@3.5.12':
+  '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.0
-      '@vue/shared': 3.5.12
+      '@babel/parser': 7.26.7
+      '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
       source-map-js: 1.2.1
 
-  '@vue/compiler-dom@3.5.12':
+  '@vue/compiler-dom@3.5.13':
     dependencies:
-      '@vue/compiler-core': 3.5.12
-      '@vue/shared': 3.5.12
+      '@vue/compiler-core': 3.5.13
+      '@vue/shared': 3.5.13
 
-  '@vue/shared@3.5.12': {}
+  '@vue/shared@3.5.13': {}
 
   '@xobotyi/scrollbar-width@1.9.5': {}
 
@@ -4933,21 +4959,24 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  code-inspector-core@0.17.7:
+  code-inspector-core@0.19.2:
     dependencies:
-      '@vue/compiler-dom': 3.5.12
+      '@vue/compiler-dom': 3.5.13
       chalk: 4.1.2
+      dotenv: 16.4.7
+      launch-ide: 1.0.1
       portfinder: 1.0.32
     transitivePeerDependencies:
       - supports-color
 
-  code-inspector-plugin@0.17.7:
+  code-inspector-plugin@0.19.2:
     dependencies:
       chalk: 4.1.1
-      code-inspector-core: 0.17.7
-      esbuild-code-inspector-plugin: 0.17.7
-      vite-code-inspector-plugin: 0.17.7
-      webpack-code-inspector-plugin: 0.17.7
+      code-inspector-core: 0.19.2
+      dotenv: 16.4.7
+      esbuild-code-inspector-plugin: 0.19.2
+      vite-code-inspector-plugin: 0.19.2
+      webpack-code-inspector-plugin: 0.19.2
     transitivePeerDependencies:
       - supports-color
 
@@ -5278,6 +5307,8 @@ snapshots:
 
   dompurify@3.1.6: {}
 
+  dotenv@16.4.7: {}
+
   eastasianwidth@0.2.0: {}
 
   electron-to-chromium@1.5.45: {}
@@ -5393,9 +5424,9 @@ snapshots:
       is-date-object: 1.0.5
       is-symbol: 1.0.4
 
-  esbuild-code-inspector-plugin@0.17.7:
+  esbuild-code-inspector-plugin@0.19.2:
     dependencies:
-      code-inspector-core: 0.17.7
+      code-inspector-core: 0.19.2
     transitivePeerDependencies:
       - supports-color
 
@@ -5973,6 +6004,11 @@ snapshots:
       vscode-languageserver: 9.0.1
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
+
+  launch-ide@1.0.1:
+    dependencies:
+      chalk: 4.1.2
+      dotenv: 16.4.7
 
   layout-base@1.0.2: {}
 
@@ -6922,9 +6958,9 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  vite-code-inspector-plugin@0.17.7:
+  vite-code-inspector-plugin@0.19.2:
     dependencies:
-      code-inspector-core: 0.17.7
+      code-inspector-core: 0.19.2
     transitivePeerDependencies:
       - supports-color
 
@@ -6957,9 +6993,9 @@ snapshots:
 
   vscode-uri@3.0.8: {}
 
-  webpack-code-inspector-plugin@0.17.7:
+  webpack-code-inspector-plugin@0.19.2:
     dependencies:
-      code-inspector-core: 0.17.7
+      code-inspector-core: 0.19.2
     transitivePeerDependencies:
       - supports-color
 
